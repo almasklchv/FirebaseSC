@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/tvChannelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Channel name"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvChannelPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Channel place"
+        android:layout_gravity="left|bottom"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/tvChannelSubscribers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Channel subscribers"
+        android:textStyle="italic"
+        android:layout_gravity="right|bottom"
+        android:textColor="#BC0404" />
+</FrameLayout>
