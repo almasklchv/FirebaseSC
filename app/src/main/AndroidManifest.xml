@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirebaseSC">
         <activity
-            android:name=".AddFilmInfoToList"
+            android:name=".EditFilmInfoInListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddFilmInfoToListActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

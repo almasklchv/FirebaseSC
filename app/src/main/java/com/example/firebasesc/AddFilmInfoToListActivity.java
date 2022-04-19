@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import classes.MovieInfo;
 
-public class AddFilmInfoToList extends AppCompatActivity {
+public class AddFilmInfoToListActivity extends AppCompatActivity {
     EditText etName;
     EditText etReleaseYear;
     EditText etRating;
@@ -46,7 +46,7 @@ public class AddFilmInfoToList extends AppCompatActivity {
         }
         else {
             // AlertDialog
-            AlertDialog.Builder builder = new AlertDialog.Builder(AddFilmInfoToList.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(AddFilmInfoToListActivity.this);
             builder.setTitle("Добавить новый пункт?");
             builder.setCancelable(false);
             DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {

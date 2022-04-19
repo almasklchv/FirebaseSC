@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<MovieInfo> films;
     ListItemAdapter adapter;
     int ADD_ITEM_TO_LIST_ACTIVITY_REQUEST_CODE = 1;
-    int channelPlace = 1;
     FirebaseDatabase db;
     DatabaseReference filmsRef;
 
@@ -39,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
 
-        ListView youtubersOrTwitchStreamersList = findViewById(R.id.MainList);
+        ListView filmsList = findViewById(R.id.MainList);
         adapter =
                 new ListItemAdapter(this, films);
-        youtubersOrTwitchStreamersList.setAdapter(adapter);
+        filmsList.setAdapter(adapter);
 
         db = FirebaseDatabase.getInstance();
         filmsRef = db.getReference().child("Films");
@@ -65,6 +66,30 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        // начал выполнять задание "Приложение с отзывами на фильмы", но не успел, извините, больше такое не повторится, буду решать задания сразу после того как дадите задания
+//        filmsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                int id = (int) view.getTag();
+//
+//                for (MovieInfo mp : films) {
+//                    if (mp.id.equals(id)) {
+//                        Intent intent = new Intent(getApplicationContext(), EditMediaPersonActivity.class);
+//                        int editChannelPlace = mp.getChannelPlace();
+//                        String editChannelName = mp.getChannelName();
+//                        String editChannelSubscribers = mp.getChannelSubscribers();
+//
+//                        intent.putExtra("editChannelPlace", editChannelPlace);
+//                        intent.putExtra("editChannelName", editChannelName);
+//                        intent.putExtra("editChannelSubscribers", editChannelSubscribers);
+//                        startActivityForResult(intent, 2);
+//                        break;
+//                    }
+//                }
+//                return true;
+//            }
+//        });
     }
 
     public void init() {
@@ -81,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.addItemToList) {
-            Intent intent = new Intent(this, AddFilmInfoToList.class);
+            Intent intent = new Intent(this, AddFilmInfoToListActivity.class);
             startActivityForResult(intent, ADD_ITEM_TO_LIST_ACTIVITY_REQUEST_CODE);
         }
         return super.onOptionsItemSelected(item);
