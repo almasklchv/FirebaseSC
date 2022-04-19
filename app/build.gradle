@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.example.firebasesc"
@@ -26,7 +26,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion '31.0.0'
 }
 

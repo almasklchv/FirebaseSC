@@ -5,28 +5,28 @@
     android:padding="10dp" >
 
     <TextView
-        android:id="@+id/tvChannelName"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Channel name"
+        android:text="name"
         android:textSize="25dp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvChannelPlace"
+        android:id="@+id/tvReleaseYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Channel place"
+        android:text="release year"
         android:layout_gravity="left|bottom"
         android:textStyle="italic" />
 
     <TextView
-        android:id="@+id/tvChannelSubscribers"
+        android:id="@+id/tvRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Channel subscribers"
+        android:text="rating"
         android:textStyle="italic"
         android:layout_gravity="right|bottom"
-        android:textColor="#BC0404" />
+        android:textColor="#FF9800" />
 </FrameLayout>

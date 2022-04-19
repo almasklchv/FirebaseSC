@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddItemToListActivity">
+    tools:context=".AddFilmInfoToList">
 
     <EditText
-        android:id="@+id/channelName"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Название канала"
+        android:hint="Название фильма"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -21,28 +21,42 @@
         app:layout_constraintVertical_bias="0.354" />
 
     <EditText
-        android:id="@+id/channelSubscribers"
+        android:id="@+id/releaseYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Количество подписчиков"
+        android:hint="Год выхода"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/channelName"
+        app:layout_constraintTop_toBottomOf="@+id/name"
         app:layout_constraintVertical_bias="0.035" />
 
+    <EditText
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Рейтинг фильма"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/releaseYear" />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Добавить"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/channelSubscribers"
-        app:layout_constraintVertical_bias="0.053" />
+        app:layout_constraintTop_toBottomOf="@+id/rating"
+        app:layout_constraintVertical_bias="0.105"
+        android:onClick="btnClicked"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

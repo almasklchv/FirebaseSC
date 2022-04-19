@@ -11,35 +11,35 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
-import classes.MediaPerson;
+import classes.MovieInfo;
 
-public class ListItemAdapter extends ArrayAdapter<MediaPerson> {
+public class ListItemAdapter extends ArrayAdapter<MovieInfo> {
     Context context;
-    ArrayList<MediaPerson> youtubersOrTwitchStreamers;
+    ArrayList<MovieInfo> films;
 
-    public ListItemAdapter(Context context, ArrayList<MediaPerson> youtubers) {
+    public ListItemAdapter(Context context, ArrayList<MovieInfo> youtubers) {
         super(context, R.layout.activity_main_list_item, youtubers);
         this.context = context;
-        this.youtubersOrTwitchStreamers = youtubers;
+        this.films = youtubers;
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        MediaPerson youtuber = this.youtubersOrTwitchStreamers.get(position);
+        MovieInfo movie = this.films.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(this.context);
         View view = inflater.inflate(R.layout.activity_main_list_item, null, false);
 
-        TextView tvChannelName = view.findViewById(R.id.tvChannelName);
-        TextView tvChannelPlace = view.findViewById(R.id.tvChannelPlace);
-        TextView tvChannelSubscribers = view.findViewById(R.id.tvChannelSubscribers);
+        TextView tvName = view.findViewById(R.id.tvName);
+        TextView tvReleaseYear = view.findViewById(R.id.tvReleaseYear);
+        TextView tvRating = view.findViewById(R.id.tvRating);
 
-        tvChannelName.setText(youtuber.getChannelName());
-        tvChannelPlace.setText(youtuber.getChannelPlace() + "");
-        tvChannelSubscribers.setText(youtuber.getChannelSubscribers());
+        tvName.setText(movie.getName());
+        tvReleaseYear.setText(movie.getReleaseYear() + "");
+        tvRating.setText(movie.getRating() + "");
 
-        view.setTag(youtuber.getChannelPlace());
+        view.setTag(movie.getReleaseYear());
 
         return view;
     }
