@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/PREDATOR/FirebaseSC/app/src/main/res/layout/activity_add_item_to_list.xml" value="0.25" />
-        <entry key="..\:/Users/PREDATOR/FirebaseSC/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
+        <entry key="..\:/Users/PREDATOR/FirebaseSC/app/src/main/res/layout/activity_edit_film_info_in_list.xml" value="0.16799999999999998" />
+        <entry key="..\:/Users/PREDATOR/FirebaseSC/app/src/main/res/layout/activity_main.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/PREDATOR/FirebaseSC/app/src/main/res/layout/activity_main_list_item.xml" value="0.25" />
+        <entry key="..\:/Users/PREDATOR/FirebaseSC/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
+        <entry key="..\:/Users/PREDATOR/FirebaseSC/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/PREDATOR/FirebaseSC/app/src/main/res/menu/activity_main_menu.xml" value="0.25" />
       </map>
     </option>

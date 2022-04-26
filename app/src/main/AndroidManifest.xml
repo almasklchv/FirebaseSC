@@ -10,10 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirebaseSC">
         <activity
-            android:name=".EditFilmInfoInListActivity"
+            android:name=".SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".AddFilmInfoToListActivity"
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditFilmInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddFilmInfoActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

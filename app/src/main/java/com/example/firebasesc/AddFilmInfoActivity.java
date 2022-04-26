@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import classes.MovieInfo;
 
-public class AddFilmInfoToListActivity extends AppCompatActivity {
+public class AddFilmInfoActivity extends AppCompatActivity {
     EditText etName;
     EditText etReleaseYear;
     EditText etRating;
@@ -46,7 +46,7 @@ public class AddFilmInfoToListActivity extends AppCompatActivity {
         }
         else {
             // AlertDialog
-            AlertDialog.Builder builder = new AlertDialog.Builder(AddFilmInfoToListActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(AddFilmInfoActivity.this);
             builder.setTitle("Добавить новый пункт?");
             builder.setCancelable(false);
             DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
@@ -54,7 +54,7 @@ public class AddFilmInfoToListActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialogInterface, int i) {
                     if (i == DialogInterface.BUTTON_POSITIVE) {
                         Intent intent = new Intent();
-                        MovieInfo addMediaPerson = new MovieInfo(Integer.parseInt(String.valueOf(etReleaseYear.getText())), String.valueOf(etName.getText()), Integer.parseInt(String.valueOf(etRating.getText())));
+                        MovieInfo addMediaPerson = new MovieInfo(Integer.parseInt(String.valueOf(etReleaseYear.getText())), String.valueOf(etName.getText()), Float.parseFloat(String.valueOf(etRating.getText())));
                         DatabaseReference push = films.push();
                         String key = push.getKey();
                         Toast.makeText(getApplicationContext(), key, Toast.LENGTH_LONG).show();

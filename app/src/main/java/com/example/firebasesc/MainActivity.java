@@ -1,7 +1,6 @@
 package com.example.firebasesc;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,8 +8,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,15 +20,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import classes.MovieInfo;
+import classes.Person;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<MovieInfo> films;
     ListItemAdapter adapter;
-    int ADD_ITEM_TO_LIST_ACTIVITY_REQUEST_CODE = 1;
+    int ADD_FILM_INFO_ACTIVITY_REQUEST_CODE = 1;
+    int EDIT_FILM_INFO_ACTIVITY_REQUEST_CODE = 2;
     FirebaseDatabase db;
     DatabaseReference filmsRef;
-
-
+    Auth auth;
 
 
     @Override
@@ -45,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
                 new ListItemAdapter(this, films);
         filmsList.setAdapter(adapter);
 
+        auth = new Auth(this);
+
+        if (auth.getUsername() == null) {
+            Intent intent = new Intent(getApplicationContext(),
+                    SignInActivity.class);
+            startActivity(intent);
+        }
+
         db = FirebaseDatabase.getInstance();
         filmsRef = db.getReference().child("Films");
 
@@ -56,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 films.clear();
                 for (DataSnapshot data : snapshot.getChildren()) {
                     MovieInfo mI = data.getValue(MovieInfo.class);
+
                     films.add(mI);
                 }
                 adapter.notifyDataSetChanged();
@@ -67,60 +74,57 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // начал выполнять задание "Приложение с отзывами на фильмы", но не успел, извините, больше такое не повторится, буду решать задания сразу после того как дадите задания
-//        filmsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                int id = (int) view.getTag();
-//
-//                for (MovieInfo mp : films) {
-//                    if (mp.id.equals(id)) {
-//                        Intent intent = new Intent(getApplicationContext(), EditMediaPersonActivity.class);
-//                        int editChannelPlace = mp.getChannelPlace();
-//                        String editChannelName = mp.getChannelName();
-//                        String editChannelSubscribers = mp.getChannelSubscribers();
-//
-//                        intent.putExtra("editChannelPlace", editChannelPlace);
-//                        intent.putExtra("editChannelName", editChannelName);
-//                        intent.putExtra("editChannelSubscribers", editChannelSubscribers);
-//                        startActivityForResult(intent, 2);
-//                        break;
-//                    }
-//                }
-//                return true;
-//            }
-//        });
-    }
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    Person p = data.getValue(Person.class);
+                    auth.setCurrentUser(p);
+                }
+                if (auth.getCurrentUser() == null) {
+                    Intent intent = new Intent(getApplicationContext(),
+                            SignInActivity.class);
+                    startActivity(intent);
+                }
+            }
 
-    public void init() {
-        films = new ArrayList<>();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.addItemToList) {
-            Intent intent = new Intent(this, AddFilmInfoToListActivity.class);
-            startActivityForResult(intent, ADD_ITEM_TO_LIST_ACTIVITY_REQUEST_CODE);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == ADD_ITEM_TO_LIST_ACTIVITY_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
+            });
         }
 
+
+
+
+
+
+        public void init() {
+            films = new ArrayList<>();
+        }
+
+        @Override
+        public boolean onCreateOptionsMenu (Menu menu){
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.activity_main_menu, menu);
+            return super.onCreateOptionsMenu(menu);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected (MenuItem item){
+            if (item.getItemId() == R.id.addItemToList) {
+                Intent intent = new Intent(this, AddFilmInfoActivity.class);
+                startActivity(intent);
+            } else if (item.getItemId() == R.id.signOut) {
+                auth.saveUsername(null);
+                Intent intent = new Intent(getApplicationContext(),
+                        SignInActivity.class);
+                startActivity(intent);
+            }
+            return super.onOptionsItemSelected(item);
+        }
+
+
     }
-}

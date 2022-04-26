@@ -3,6 +3,7 @@ package classes;
 import java.io.Serializable;
 
 public class MovieInfo implements Serializable {
+    public int position1;
     public String id;
     private String name;
     private int releaseYear;
@@ -36,6 +37,9 @@ public class MovieInfo implements Serializable {
     public float getRating() {
         return this.rating;
     }
+    public int getPosition1() {
+        return this.position1;
+    }
 
     // setter
     public void setName(String name) {
@@ -47,8 +51,10 @@ public class MovieInfo implements Serializable {
     public void setRating(float rating) {
         this.rating = rating;
     }
-
     public void setId(String id) {
         this.id = id;
+    }
+    public void setPosition1(int position1) {
+        this.position1 = position1;
     }
 }
